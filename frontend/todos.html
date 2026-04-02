@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>My Tasks - Todo App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <div>
+                <h2 id="userGreeting">My Tasks</h2>
+                <p id="taskStats">0 tasks</p>
+            </div>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+
+        <div class="add-task-container">
+            <div class="add-task-form">
+                <input type="text" id="todoTitle" placeholder="What needs to be done?" autocomplete="off">
+                <button id="addBtn">+ Add</button>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <div id="todoList" class="tasks-list"></div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Task</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <input type="text" id="editTitle" placeholder="Task title">
+            <input type="text" id="editDescription" placeholder="Description (optional)">
+            <div class="modal-actions">
+                <button id="cancelEditBtn" class="btn-secondary">Cancel</button>
+                <button id="saveEditBtn" class="btn-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
