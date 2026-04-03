@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'https://todo-api.onrender.com/api';
+const API_URL = 'https://todo-api-aaxs.onrender.com';
 
 // Helper functions
 function getToken() {
