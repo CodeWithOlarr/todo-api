@@ -1,5 +1,5 @@
 // API URL
-const API_URL = 'http://localhost:7000/api';
+const API_URL = 'https://todo-api.onrender.com/api';
 
 // Helper functions
 function getToken() {
