@@ -1,5 +1,7 @@
-// API URL
-const API_URL = 'https://todo-api-aaxs.onrender.com';
+// API URL - FIXED with /api at the end
+const API_URL = 'https://todo-api-aaxs.onrender.com/api';
+
+console.log('API URL:', API_URL);
 
 // Helper functions
 function getToken() {
@@ -41,6 +43,7 @@ if (document.getElementById('registerForm')) {
         const password = document.getElementById('password').value;
         
         try {
+            console.log('Registering at:', `${API_URL}/auth/register`);
             const response = await fetch(`${API_URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -48,6 +51,7 @@ if (document.getElementById('registerForm')) {
             });
             
             const data = await response.json();
+            console.log('Response:', data);
             
             if (response.ok) {
                 saveToken(data.token);
@@ -59,11 +63,12 @@ if (document.getElementById('registerForm')) {
                 }, 1000);
             } else {
                 messageEl.style.color = '#e53e3e';
-                messageEl.textContent = data.message;
+                messageEl.textContent = data.message || 'Registration failed';
             }
         } catch (error) {
+            console.error('Error:', error);
             messageEl.style.color = '#e53e3e';
-            messageEl.textContent = 'Connection error';
+            messageEl.textContent = 'Connection error: ' + error.message;
         }
     });
 }
@@ -84,6 +89,7 @@ if (document.getElementById('loginForm')) {
         const password = document.getElementById('password').value;
         
         try {
+            console.log('Logging in at:', `${API_URL}/auth/login`);
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -91,6 +97,7 @@ if (document.getElementById('loginForm')) {
             });
             
             const data = await response.json();
+            console.log('Response:', data);
             
             if (response.ok) {
                 saveToken(data.token);
@@ -102,11 +109,12 @@ if (document.getElementById('loginForm')) {
                 }, 1000);
             } else {
                 messageEl.style.color = '#e53e3e';
-                messageEl.textContent = data.message;
+                messageEl.textContent = data.message || 'Login failed';
             }
         } catch (error) {
+            console.error('Error:', error);
             messageEl.style.color = '#e53e3e';
-            messageEl.textContent = 'Connection error';
+            messageEl.textContent = 'Connection error: ' + error.message;
         }
     });
 }
@@ -140,7 +148,7 @@ if (document.getElementById('todoList')) {
             updateStats(todos);
             displayTodos(todos);
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error loading todos:', error);
         }
     }
     
