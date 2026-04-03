@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 3000;
 
 // CORS 
 app.use(cors({
-    origin: 'http://localhost:7000',
+    origin: ['http://localhost:7000',
+    'https://todo-api-aaxs.onrender.com'],
     credentials: true
 }));
 
